@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EECS4443-Project</string>
+    <string name="app_name_display">Voice Navigation Study</string>
 </resources>
