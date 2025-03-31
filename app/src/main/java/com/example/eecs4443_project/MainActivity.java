@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     private Button firstButton, secondButton, thirdButton;
+
 private Boolean firstTaskComplete, secondTaskComplete, thirdTaskComplete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,13 @@ private Boolean firstTaskComplete, secondTaskComplete, thirdTaskComplete;
 
     }
 
+    /**
+     * Method to check if all tasks completed
+     * @param first
+     * @param second
+     * @param third
+     * @return
+     */
     private Boolean checkTaskComplete(Boolean first, Boolean second, Boolean third){
         if (first && second && third){
             return true;
