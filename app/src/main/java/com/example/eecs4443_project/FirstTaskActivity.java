@@ -1,6 +1,7 @@
 package com.example.eecs4443_project;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
@@ -14,8 +15,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class FirstTaskActivity extends AppCompatActivity {
-    private int VOICE_PERMISSION = 100;
+    private static final int VOICE_PERMISSION = 100;
+
 
     private TextView textView;
     private Button speak;
@@ -50,10 +54,21 @@ public class FirstTaskActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == VOICE_PERMISSION && resultCode == RESULT_OK){
-            textView.setText(data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
+            //textView.setText(data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
+            ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            if (results != null && !results.isEmpty()){
+                String query = results.get(0);
+                textView.setText("Searching weather for: " + query);
+                searchWeather(query);
+            }
 
         }
     }
 
+    private void searchWeather(String query){
+        String searchurl = "https://www.google.com/search?q=weather+" + query;
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(searchurl));
+        startActivity(intent);
+    }
 
 }
