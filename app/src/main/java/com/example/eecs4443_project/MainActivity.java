@@ -1,6 +1,8 @@
 package com.example.eecs4443_project;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +11,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
+    private Button firstButton, secondButton, thirdButton;
+private Boolean firstTaskComplete, secondTaskComplete, thirdTaskComplete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +23,38 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //initialize
+        firstTaskComplete = false;
+        secondTaskComplete = false;
+        thirdTaskComplete = false;
+        firstButton = findViewById(R.id.firsttaskbutton);
+        secondButton = findViewById(R.id.secondtaskbutton);
+        thirdButton = findViewById(R.id.thirdtaskbutton);
+
+
+
+        //when buttons clicked
+        firstButton.setOnClickListener(v -> {
+            Intent firstIntent = new Intent(this, FirstTaskActivity.class);
+            startActivity(firstIntent);
+        });
+        secondButton.setOnClickListener(v -> {
+            Intent secondIntent = new Intent(this, SecondTaskActivity.class);
+            startActivity(secondIntent);
+        });
+        thirdButton.setOnClickListener(v -> {
+            Intent thirdIntent = new Intent(this, ThirdTaskActivity.class);
+            startActivity(thirdIntent);
+        });
+
+    }
+
+    private Boolean checkTaskComplete(Boolean first, Boolean second, Boolean third){
+        if (first && second && third){
+            return true;
+        }
+        return false;
     }
 
 
