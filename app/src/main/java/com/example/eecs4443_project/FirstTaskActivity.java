@@ -22,7 +22,8 @@ public class FirstTaskActivity extends AppCompatActivity {
 
 
     private TextView textView;
-    private Button speak;
+    Stopwatch
+    private Button speak, confirm, tryagain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,20 +35,40 @@ public class FirstTaskActivity extends AppCompatActivity {
             return insets;
         });
 
+        //initializes
         textView = findViewById(R.id.textViewTEST);
         speak = findViewById(R.id.buttonTest);
 
+        //when clicked opens microphone intent
         speak.setOnClickListener(v ->{
             speak();
         });
+
+        //
     }
+
+    /**
+     * method that launches microphone intent
+     */
 
     public void speak(){
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Start Speak");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say what's the weather in New York?");
         startActivityForResult(intent, VOICE_PERMISSION);
     }
+
+    /**
+     * method that grabs microphone input and sets text
+     * @param requestCode The integer request code originally supplied to
+     *                    startActivityForResult(), allowing you to identify who this
+     *                    result came from.
+     * @param resultCode The integer result code returned by the child activity
+     *                   through its setResult().
+     * @param data An Intent, which can return result data to the caller
+     *               (various data can be attached to Intent "extras").
+     *
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
@@ -58,13 +79,20 @@ public class FirstTaskActivity extends AppCompatActivity {
             ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             if (results != null && !results.isEmpty()){
                 String query = results.get(0);
-                textView.setText("Searching weather for: " + query);
+                //do a dialogue pop up here
+                textView.setText("You said: " + query);
+                //two buttons, confirm or try again
+
                 searchWeather(query);
             }
 
         }
     }
 
+    /**
+     * method that opens web browser to look for weather + user input on google
+     * @param query
+     */
     private void searchWeather(String query){
         String searchurl = "https://www.google.com/search?q=weather+" + query;
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(searchurl));
