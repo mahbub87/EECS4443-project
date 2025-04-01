@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -28,9 +29,10 @@ public class FirstTaskActivity extends AppCompatActivity {
     private ImageView check, check2;
     private TextView textView;
     StopWatch stopWatch = new StopWatch();
+    StopWatch stopWatch2 = new StopWatch();
     private int tryagain, errorPercent, errorPercent2,  tryagain2;
     private long time, time2;
-    private String activationWord = "Hey Guide!";
+    private String activationWord = "Buddy";
     private Button confirm, confirm2, next;
     private ImageButton speak, speak2;
     @Override
@@ -45,7 +47,6 @@ public class FirstTaskActivity extends AppCompatActivity {
         });
 
         //initializes
-        textView = findViewById(R.id.textViewTEST);
         speak = findViewById(R.id.fs1_speak_button);
         speak2 = findViewById(R.id.fs2_speak_button);
         confirm = findViewById(R.id.fs1_confirm_button);
@@ -80,9 +81,30 @@ public class FirstTaskActivity extends AppCompatActivity {
             activationWord = "weather";
             tryagain2++; // tracks button click
             speak();
-            stopWatch.reset();
-            stopWatch.start();
+            stopWatch2.reset();
+            stopWatch2.start();
             confirm2.setVisibility(View.VISIBLE);
+        });
+
+        //confirm button if clicked, stopwtch stopped and method called
+        confirm.setOnClickListener(v -> {
+            if (tryagain != 0){
+                errorPercent = errorPercentage(tryagain);
+                stopWatch.stop();
+                time = stopWatch.getTime();
+                check.setVisibility(View.VISIBLE);
+            }
+
+        });
+
+        confirm2.setOnClickListener(v -> {
+            if(tryagain2 != 0){
+                errorPercent2 = errorPercentage(tryagain2);
+                stopWatch2.stop();
+                time2 = stopWatch2.getTime();
+                check2.setVisibility(View.VISIBLE);
+            }
+
         });
 
         //if next button clicked
@@ -133,30 +155,8 @@ public class FirstTaskActivity extends AppCompatActivity {
             ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             if (results != null && !results.isEmpty()){
                 String query = results.get(0);
-                //do a dialogue pop up here
-                textView.setText("You said: " + query);
+                //parse thru
                 withActivationWord(query);
-
-                //confirm button if clicked, stopwtch stopped and method called
-                confirm.setOnClickListener(v -> {
-                    if (tryagain != 0){
-                        errorPercent = errorPercentage(tryagain);
-                        stopWatch.stop();
-                        time = stopWatch.getTime();
-                        check.setVisibility(View.VISIBLE);
-                    }
-
-                });
-
-                confirm2.setOnClickListener(v -> {
-                    if(tryagain2 != 0){
-                        errorPercent2 = errorPercentage(tryagain2);
-                        stopWatch.stop();
-                        time2 = stopWatch.getTime();
-                        check2.setVisibility(View.VISIBLE);
-                    }
-
-                });
 
             }
 
@@ -169,12 +169,12 @@ public class FirstTaskActivity extends AppCompatActivity {
      */
     private void withActivationWord(String query) {
         // Check if the query contains the activation word
-        if (query.toLowerCase().contains(activationWord)) {
+        if (query.toLowerCase().contains(activationWord.toLowerCase())) {
           //open web browser
             int startIndex = query.indexOf(activationWord) + activationWord.length();
-
             // Extract everything after the activation word
             String command = query.substring(startIndex).trim();
+            Log.e("MYDEBUG", "withActivationWord: trim" + command );
             searchWeather(command);
         }
     }

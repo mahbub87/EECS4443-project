@@ -70,7 +70,9 @@
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTEST2"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/mic"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true" />
 
     <Button
         android:id="@+id/f_next_button"
@@ -93,7 +95,9 @@
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTEST4"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/mic"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
 
     <ImageView
         android:id="@+id/fs1_check"
@@ -103,7 +107,7 @@
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toEndOf="@+id/textViewTEST"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/check" />
 
     <ImageView
         android:id="@+id/fs2_check"
@@ -113,7 +117,7 @@
         android:layout_marginTop="336dp"
         app:layout_constraintStart_toEndOf="@+id/textViewTEST3"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/check" />
 
     <Button
         android:id="@+id/fs1_confirm_button"
