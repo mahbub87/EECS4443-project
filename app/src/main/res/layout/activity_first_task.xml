@@ -7,14 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".FirstTaskActivity">
 
+    <Button
+        android:id="@+id/fs2_confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="562dp" />
+
     <TextView
         android:id="@+id/textViewTEST"
         android:layout_width="262dp"
         android:layout_height="58dp"
-        android:layout_marginTop="72dp"
-        android:text="TextView"
+        android:layout_marginTop="40dp"
+        android:text="@string/step1label"
+        android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintHorizontal_bias="0.322"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +32,7 @@
         android:id="@+id/textViewTEST3"
         android:layout_width="262dp"
         android:layout_height="58dp"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="236dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.322"
@@ -43,59 +53,69 @@
         android:id="@+id/textViewTEST4"
         android:layout_width="261dp"
         android:layout_height="56dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTEST" />
 
-    <Button
-        android:id="@+id/buttonTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Button"
+    <ImageButton
+        android:id="@+id/fs2_speak_button"
+        android:layout_width="57dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTEST2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTEST2"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/buttonTest4"
+        android:id="@+id/f_next_button"
         android:layout_width="166dp"
         android:layout_height="58dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="112dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonTest" />
+        app:layout_constraintTop_toBottomOf="@+id/fs2_speak_button" />
 
-    <Button
-        android:id="@+id/buttonTest3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Button"
+    <ImageButton
+        android:id="@+id/fs1_speak_button"
+        android:layout_width="66dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTEST4" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="60dp"
-        android:layout_height="56dp"
-        tools:layout_editor_absoluteX="316dp"
-        tools:layout_editor_absoluteY="72dp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTEST4"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/fs1_check"
+        android:layout_width="60dp"
+        android:layout_height="56dp"
+        tools:layout_editor_absoluteX="316dp"
+        tools:layout_editor_absoluteY="42dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/fs2_check"
         android:layout_width="60dp"
         android:layout_height="56dp"
         tools:layout_editor_absoluteX="316dp"
         tools:layout_editor_absoluteY="326dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/fs1_confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="254dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">EECS4443-Project</string>
     <string name="app_name_display">Voice Navigation Study</string>
+    <string name="step1label">Step 1</string>
+    <string name="step2label">Step 2</string>
+    <string name="firsttask_step1_desc">The task is to find the weather of a city. First think of a city.
+        Then, please repeat: 'blablablablabla Hey Guide! Whats the weather in (city)' </string>
+
+    <string name="firsttask_step2_desc">The task is to not use an activation word. Try asking for
+    the weather of a city. For example 'What's the weather in New York?'</string>
 </resources>
