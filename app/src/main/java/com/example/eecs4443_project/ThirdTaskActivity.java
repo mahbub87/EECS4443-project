@@ -85,7 +85,7 @@ public class ThirdTaskActivity extends AppCompatActivity {
 
         speak2.setOnClickListener(v ->{
             currstep = 2;
-            activationWord = "weather";
+            activationWord = "is";
             tryagain2++; // tracks button click
             speak();
             stopWatch2.reset();
