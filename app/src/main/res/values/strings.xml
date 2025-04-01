@@ -1,15 +1,47 @@
 <resources>
     <string name="app_name">EECS4443-Project</string>
     <string name="app_name_display">Voice Navigation Study</string>
+    <string name="resultslabel">Results</string>
     <string name="step1label">Step 1</string>
     <string name="step2label">Step 2</string>
+    <string name= "firsttasklabel">First Task</string>
+    <string name= "secondtasklabel">Second Task</string>
+    <string name= "thirdtasklabel">Third Task</string>
     <string name="next_button_text">Next</string>
+    <string name="ok_button_text">OK</string>
     <string name="confirm_button_text">Confirm</string>
+    <string name="default_calc_text">0.0</string>
+    <string name="welcome_text">This is a study to test the efficiency and effectiveness of voice
+    navigation with or without a wake call\n Instructions are to click on the tasks. Each task is
+    divided into 2 steps. You are to press the speak button before reading the script. Once the task
+    is successfully completed you are to click the confirm button.</string>
+    <string name="time">Step 1 total time: %dms\nStep 2 total time: %dms</string>
+    <string name="error">Step 1 error rate: %d%%\nStep 2 error rate: %d%%</string>
+    <string name="menudescription">Complete the following tasks</string>
+    <string name="userratingtext">I found it easier to complete the task using an activation phrase
+    compared to no activation phrase</string>
+    <string name="userratingtext2">The absence of an activation phrase made the task feel slower or
+    frustrating.</string>
+    <string name="userratingtext3">I felt more in control of the task when using an activation phrase.</string>
     <string name="firsttask_step1_desc">The task is to find the weather of a city. First think of a city.
-        Then, please repeat: \'I like apple pie with ice cream. It is a nice treat. Hey Guide!
-        Whats the weather in (city) ' </string>
+        Then, please repeat: I like apple pie with ice cream. It is a nice treat. Hey Buddy!
+        Whats the weather in (city)  </string>
 
     <string name="firsttask_step2_desc">The task is to find the weather of a city. First think of a city.
-        Then, please repeat: \'I like apple pie with ice cream. It is a nice treat.
-        Whats the weather in (city) '</string>
+        Then, please repeat: I like apple pie with ice cream. It is a nice treat.
+        Whats the weather in (city) </string>
+    <string name="secondtask_step1_desc">The task is to set an alarm. First think of a time.
+        Then, please repeat: I like cookies better than cake. It is a nice treat. Hey Buddy!
+        Set an alarm for (time)  </string>
+
+    <string name="secondtask_step2_desc">The task is to set an alarm. First think of a time.
+        Then, please repeat: I like apple pie with ice cream. It is a nice treat.
+        Set an alarm for (time) </string>
+    <string name="thirdtask_step1_desc">The task is to calculate something. First think of an equation.
+        Then, please repeat: The ocean is very calming. It is my favourite place. Hey Buddy!
+        What is (equation)  </string>
+
+    <string name="thirdtask_step2_desc">The task is to calculate something. First think of an equation.
+        Then, please repeat: The ocean is very calming. It is my favourite place.
+        What is (equation) </string>
 </resources>

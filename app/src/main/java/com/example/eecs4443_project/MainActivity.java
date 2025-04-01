@@ -1,7 +1,10 @@
 package com.example.eecs4443_project;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -12,7 +15,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    private Button firstButton, secondButton, thirdButton;
+    Dialog dialog;
+    private Button firstButton, secondButton, thirdButton, dialogButton;
 private Boolean firstTaskComplete, secondTaskComplete, thirdTaskComplete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,20 @@ private Boolean firstTaskComplete, secondTaskComplete, thirdTaskComplete;
         firstButton = findViewById(R.id.firstTaskButton);
         secondButton = findViewById(R.id.secondTaskButton);
         thirdButton = findViewById(R.id.thirdTaskButton);
+
+
+        //dialog
+        dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.welcome_page);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialogButton = dialog.findViewById(R.id.welcome_ok_button);
+        dialog.show();
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
 
 

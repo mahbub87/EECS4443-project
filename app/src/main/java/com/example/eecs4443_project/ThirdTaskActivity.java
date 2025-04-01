@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,11 +19,22 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.apache.commons.lang3.time.StopWatch;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ThirdTaskActivity extends AppCompatActivity {
     private static final int VOICE_PERMISSION = 100;
-    private Button speak;
+    private TextView calcresult, calcresult2;
+    private long time, time2;
+    private Button confirm, confirm2, next;
+    private ImageView check, check2;
+    StopWatch stopWatch = new StopWatch();
+    StopWatch stopWatch2 = new StopWatch();
+    private int tryagain, errorPercent, errorPercent2,  tryagain2, currstep;
+    private String activationWord = "Buddy";
+    private ImageButton speak, speak2;
     private TextView view;
 
     @Override
@@ -34,14 +48,93 @@ public class ThirdTaskActivity extends AppCompatActivity {
             return insets;
         });
 
-        speak = findViewById(R.id.thirdtasksteponebutton);
-        view = findViewById(R.id.textViewsteponethird);
+        //init
+        speak = findViewById(R.id.ts1_speak_button);
+        speak2 = findViewById(R.id.ts2_speak_button);
+        confirm = findViewById(R.id.ts1_confirm_button);
+        confirm2 = findViewById(R.id.ts2_confirm_button);
+        next = findViewById(R.id.t_next_button);
+        check = findViewById(R.id.ts1_check);
+        check2 = findViewById(R.id.ts2_check);
+        calcresult = findViewById(R.id.calc_result_view);
+        calcresult2 = findViewById(R.id.calc_result_view2);
+        tryagain = 0;
+        tryagain2 = 0;
+        errorPercent = 0;
+        errorPercent2 = 0;
+        time = 0;
+        time2 = 0;
+        currstep = 0;
 
+        //turn the buttons invisible first
+        //myButton.setVisibility(View.VISIBLE);
+        confirm.setVisibility(View.INVISIBLE);
+        confirm2.setVisibility(View.INVISIBLE);
+        check.setVisibility(View.INVISIBLE);
+        check2.setVisibility(View.INVISIBLE);
+
+        //when clicked opens microphone intent
         speak.setOnClickListener(v ->{
+            currstep = 1;
+            tryagain++; // tracks button click
             speak();
+            stopWatch.reset();
+            stopWatch.start();
+            confirm.setVisibility(View.VISIBLE);
+        });
+
+        speak2.setOnClickListener(v ->{
+            currstep = 2;
+            activationWord = "weather";
+            tryagain2++; // tracks button click
+            speak();
+            stopWatch2.reset();
+            stopWatch2.start();
+            confirm2.setVisibility(View.VISIBLE);
+        });
+
+        //confirm button if clicked, stopwtch stopped and method called
+        confirm.setOnClickListener(v -> {
+            if (tryagain != 0){
+                errorPercent = errorPercentage(tryagain);
+                stopWatch.stop();
+                time = stopWatch.getTime();
+                check.setVisibility(View.VISIBLE);
+            }
+
+        });
+
+
+
+        confirm2.setOnClickListener(v -> {
+            if(tryagain2 != 0){
+                errorPercent2 = errorPercentage(tryagain2);
+                stopWatch2.stop();
+                time2 = stopWatch2.getTime();
+                check2.setVisibility(View.VISIBLE);
+            }
+
+        });
+
+        //if next button clicked
+        next.setOnClickListener(v -> {
+            if ((tryagain != 0 && tryagain2 != 0)){
+                Intent next = new Intent(this, ResultsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putLong("time", time);
+                bundle.putLong("time2", time2);
+                bundle.putInt("error", errorPercent);
+                bundle.putInt("error2", errorPercent2);
+                next.putExtras(bundle);
+                startActivity(next);
+                finish();
+            }
         });
     }
 
+    /**
+     * method that launches microphone intent
+     */
     public void speak(){
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -57,17 +150,52 @@ public class ThirdTaskActivity extends AppCompatActivity {
             //textView.setText(data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
             String results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0);
             if (results != null && !results.isEmpty()){
-                try{
-                    double resultW = calculate(results);
-                    Log.e("MYDEBUG", "onActivityResult: " + resultW);
-                    view.setText("" + resultW);
-
-                }catch (Exception e){
-                    //couldnt calculate txt
+                try {
+                    withActivationWord(results);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
             }
 
         }
+    }
+
+    /**
+     * method to check with the activation word
+     * @param query
+     */
+    private void withActivationWord(String query) throws Exception {
+        // Check if the query contains the activation word
+        if (query.toLowerCase().contains(activationWord.toLowerCase())) {
+            //open web browser
+            int startIndex = query.indexOf(activationWord) + activationWord.length();
+
+            // Extract everything after the activation word
+            String command = query.substring(startIndex).trim();
+            try{
+               double resultW = calculate(command);
+               //set textview view.setText("" + resultW);
+                if (currstep == 1){
+                    calcresult.setText("" + resultW);
+                } else if (currstep == 2) {
+                    calcresult2.setText("" + resultW);
+                }
+            }catch (IOException e){
+                //catch
+            }
+
+        }
+    }
+
+    /**
+     * method that calculates error percentage
+     * @param tries
+     * @return
+     */
+    private int errorPercentage(int tries){
+        int errors = tries - 1;
+        int percent = (errors/tries) * 100;
+        return percent;
     }
 
     private double calculate(String  input) throws Exception{
