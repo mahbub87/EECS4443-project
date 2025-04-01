@@ -85,7 +85,7 @@ public class SecondTaskActivity extends AppCompatActivity {
 
         speak2.setOnClickListener(v ->{
             currstep = 2;
-            activationWord = "weather";
+            activationWord = "alarm";
             tryagain2++; // tracks button click
             speak();
             stopWatch2.reset();
