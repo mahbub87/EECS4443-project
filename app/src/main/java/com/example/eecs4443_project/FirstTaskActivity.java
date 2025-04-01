@@ -51,6 +51,8 @@ public class FirstTaskActivity extends AppCompatActivity {
         confirm = findViewById(R.id.fs1_confirm_button);
         confirm2 = findViewById(R.id.fs2_confirm_button);
         next = findViewById(R.id.f_next_button);
+        check = findViewById(R.id.fs1_check);
+        check2 = findViewById(R.id.fs2_check);
         tryagain = 0;
         tryagain2 = 0;
         errorPercent = 0;
