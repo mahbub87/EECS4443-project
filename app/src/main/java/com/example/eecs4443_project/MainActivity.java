@@ -29,9 +29,9 @@ private Boolean firstTaskComplete, secondTaskComplete, thirdTaskComplete;
         firstTaskComplete = false;
         secondTaskComplete = false;
         thirdTaskComplete = false;
-        firstButton = findViewById(R.id.firsttaskbutton);
-        secondButton = findViewById(R.id.secondtaskbutton);
-        thirdButton = findViewById(R.id.thirdtaskbutton);
+        firstButton = findViewById(R.id.firstTaskButton);
+        secondButton = findViewById(R.id.secondTaskButton);
+        thirdButton = findViewById(R.id.thirdTaskButton);
 
 
 

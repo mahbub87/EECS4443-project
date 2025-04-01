@@ -7,173 +7,69 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="413dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:title=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="382dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.0">
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="179dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="44dp"
+        android:text="Complete the following texts"
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="208dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="9dp"
-            android:text="@string/app_name_display"
-            app:layout_constraintTop_toTopOf="parent" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="409dp"
-        android:layout_height="665dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/instructions" />
 
-        <Button
-            android:id="@+id/secondtaskbutton"
-            android:layout_width="235dp"
-            android:layout_height="75dp"
-            android:layout_below="@+id/textView4"
-            android:layout_alignStart="@+id/firsttaskbutton"
-            android:layout_alignEnd="@+id/firsttaskbutton"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="-4dp"
-            android:text="Button" />
+    <TextView
+        android:id="@+id/instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="@string/app_name_display"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <Button
-            android:id="@+id/thirdtaskbutton"
-            android:layout_width="235dp"
-            android:layout_height="75dp"
-            android:layout_below="@+id/textView5"
-            android:layout_alignStart="@+id/textView5"
-            android:layout_alignEnd="@+id/firsttaskbutton"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="0dp"
-            android:text="Button" />
+    <Button
+        android:id="@+id/firstTaskButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="64dp"
+        android:text="First Task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
-        <Button
-            android:id="@+id/firsttaskbutton"
-            android:layout_width="235dp"
-            android:layout_height="75dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignStart="@+id/textView3"
-            android:layout_alignEnd="@+id/textView3"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="25dp"
-            android:text="Button" />
+    <Button
+        android:id="@+id/secondTaskButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="4dp"
+        android:text="Second Task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/firstTaskButton" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="296dp"
-            android:layout_height="54dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="57dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="54dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignStart="@+id/textView3"
-            android:layout_alignEnd="@+id/textView3"
-            android:layout_marginStart="-3dp"
-            android:layout_marginTop="143dp"
-            android:layout_marginEnd="6dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="285dp"
-            android:layout_height="58dp"
-            android:layout_below="@+id/textView4"
-            android:layout_alignStart="@+id/textView4"
-            android:layout_alignEnd="@+id/textView4"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="159dp"
-            android:layout_marginEnd="2dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="195dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/secondtaskbutton"
-            android:layout_alignStart="@+id/secondtaskbutton"
-            android:layout_alignEnd="@+id/secondtaskbutton"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="22dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/firsttaskbutton"
-            android:layout_alignStart="@+id/firsttaskbutton"
-            android:layout_alignEnd="@+id/firsttaskbutton"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="21dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="186dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/thirdtaskbutton"
-            android:layout_alignStart="@+id/thirdtaskbutton"
-            android:layout_alignEnd="@+id/thirdtaskbutton"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="20dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </RelativeLayout>
+    <Button
+        android:id="@+id/thirdTaskButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="12dp"
+        android:text="Third Task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondTaskButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
