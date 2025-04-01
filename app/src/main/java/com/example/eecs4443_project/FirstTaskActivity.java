@@ -137,17 +137,23 @@ public class FirstTaskActivity extends AppCompatActivity {
 
                 //confirm button if clicked, stopwtch stopped and method called
                 confirm.setOnClickListener(v -> {
-                    errorPercent = errorPercentage(tryagain);
-                    stopWatch.stop();
-                    time = stopWatch.getTime();
-                    check.setVisibility(View.INVISIBLE);
+                    if (tryagain != 0){
+                        errorPercent = errorPercentage(tryagain);
+                        stopWatch.stop();
+                        time = stopWatch.getTime();
+                        check.setVisibility(View.VISIBLE);
+                    }
+
                 });
 
                 confirm2.setOnClickListener(v -> {
-                    errorPercent2 = errorPercentage(tryagain2);
-                    stopWatch.stop();
-                    time2 = stopWatch.getTime();
-                    check2.setVisibility(View.INVISIBLE);
+                    if(tryagain2 != 0){
+                        errorPercent2 = errorPercentage(tryagain2);
+                        stopWatch.stop();
+                        time2 = stopWatch.getTime();
+                        check2.setVisibility(View.VISIBLE);
+                    }
+
                 });
 
             }
