@@ -110,6 +110,7 @@ public class FirstTaskActivity extends AppCompatActivity {
         //if next button clicked
         next.setOnClickListener(v -> {
             if ((tryagain != 0 && tryagain2 != 0)){
+                StatsWriter.logTimes(this, 1, time, time2);
                 Intent next = new Intent(this, ResultsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putLong("time", time);

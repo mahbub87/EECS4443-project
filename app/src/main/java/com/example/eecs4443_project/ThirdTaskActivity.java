@@ -85,7 +85,7 @@ public class ThirdTaskActivity extends AppCompatActivity {
 
         speak2.setOnClickListener(v ->{
             currstep = 2;
-            activationWord = "weather";
+            activationWord = "is";
             tryagain2++; // tracks button click
             speak();
             stopWatch2.reset();
@@ -119,6 +119,7 @@ public class ThirdTaskActivity extends AppCompatActivity {
         //if next button clicked
         next.setOnClickListener(v -> {
             if ((tryagain != 0 && tryagain2 != 0)){
+                StatsWriter.logTimes(this, 3, time, time2);
                 Intent next = new Intent(this, ResultsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putLong("time", time);
